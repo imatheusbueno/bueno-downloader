@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101010">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Bueno DL">
+  <meta name="description" content="Baixe vídeos públicos do TikTok, Instagram e X.">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icon.svg">
+  <link rel="stylesheet" href="/style.css">
+  <title>Bueno Downloader</title>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div class="brand"><span class="brand-mark">b.</span><span>BUENO<span class="red"> DL</span></span></div>
+      <span class="pill">DOWNLOAD DE VÍDEOS</span>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow"><span class="dot"></span> SIMPLES. RÁPIDO. DIRETO.</div>
+      <h1>Seu vídeo.<br><span>Sem complicação.</span></h1>
+      <p class="sub">Cole o link do vídeo e prepare o download.</p>
+    </section>
+
+    <section class="downloader">
+      <label for="url">LINK DO VÍDEO</label>
+      <div class="input-wrap">
+        <input id="url" type="url" placeholder="Cole o link aqui..." autocomplete="url" inputmode="url">
+        <button id="paste" class="paste" type="button" aria-label="Colar link">COLAR</button>
+      </div>
+      <button id="download" class="download" type="button"><span>Baixar vídeo</span><span aria-hidden="true">↗</span></button>
+      <p id="status" class="status" role="status">Compatível com links públicos do TikTok, Instagram e X.</p>
+    </section>
+
+    <section class="platforms">
+      <div class="platform"><span class="platform-icon">♪</span><span>TikTok</span></div>
+      <div class="platform"><span class="platform-icon">◎</span><span>Instagram</span></div>
+      <div class="platform"><span class="platform-icon">𝕏</span><span>X</span></div>
+    </section>
+
+    <section class="how">
+      <h2>Como funciona</h2>
+      <div class="step"><b>01</b><div><strong>Copie o link</strong><small>Abra a publicação e copie o endereço do vídeo.</small></div></div>
+      <div class="step"><b>02</b><div><strong>Cole aqui</strong><small>Insira o link no campo acima.</small></div></div>
+      <div class="step"><b>03</b><div><strong>Salve no iPhone</strong><small>Toque em baixar e escolha onde salvar o arquivo.</small></div></div>
+    </section>
+
+    <footer>
+      <p>BUENO<span class="red"> DL</span> <span class="muted">· Feito para uso pessoal</span></p>
+      <small>Baixe apenas conteúdos que você tem direito ou autorização para guardar. Respeite os direitos autorais e os termos das plataformas.</small>
+    </footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
