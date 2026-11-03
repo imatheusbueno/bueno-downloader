@@ -1,8 +1,11 @@
 const urlInput = document.querySelector("#url");
 const statusEl = document.querySelector("#status");
 const downloadBtn = document.querySelector("#download");
+const apiBaseUrl = location.hostname.endsWith("github.io")
+  ? "https://bueno-downloader.onrender.com"
+  : "";
 
-function setStatus(message, type="") {
+function setStatus(message, type = "") {
   statusEl.textContent = message;
   statusEl.className = `status ${type}`;
 }
@@ -27,7 +30,7 @@ downloadBtn.addEventListener("click", async () => {
   setStatus("Aguarde enquanto o vídeo é processado. Não feche esta página.");
 
   try {
-    const response = await fetch("/api/download", {
+    const response = await fetch(`${apiBaseUrl}/api/download`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ url })
@@ -42,12 +45,12 @@ downloadBtn.addEventListener("click", async () => {
     const match = disposition.match(/filename="([^"]+)"/);
     const filename = match ? match[1] : "video.mp4";
     const objectUrl = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = objectUrl;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
+    const link = document.createElement("a");
+    link.href = objectUrl;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
     setTimeout(() => URL.revokeObjectURL(objectUrl), 60_000);
     setStatus("Download iniciado! No iPhone, abra o arquivo baixado ou use Compartilhar > Salvar Vídeo.", "success");
   } catch (error) {
@@ -59,5 +62,5 @@ downloadBtn.addEventListener("click", async () => {
 });
 
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
+  window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {}));
 }
