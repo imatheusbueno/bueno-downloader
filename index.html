@@ -32,8 +32,27 @@
         <input id="url" type="url" placeholder="Cole o link aqui..." autocomplete="url" inputmode="url">
         <button id="paste" class="paste" type="button" aria-label="Colar link">COLAR</button>
       </div>
+      <div id="clipboard-prompt" class="clipboard-prompt" role="status" aria-live="polite" hidden>
+        <div class="clipboard-copy">
+          <strong>Quer colar este link?</strong>
+          <span id="detected-link"></span>
+        </div>
+        <div class="clipboard-actions">
+          <button id="use-detected-link" type="button">Colar</button>
+          <button id="dismiss-clipboard" type="button">Agora não</button>
+        </div>
+      </div>
       <button id="download" class="download" type="button"><span>Baixar vídeo</span><span aria-hidden="true">↗</span></button>
       <p id="status" class="status" role="status">Compatível com links públicos do TikTok, Instagram e X.</p>
+    </section>
+
+    <section class="history" aria-labelledby="history-title">
+      <div class="history-header">
+        <h2 id="history-title">Links recentes</h2>
+        <button id="clear-history" type="button">Limpar</button>
+      </div>
+      <p id="history-empty" class="history-empty">Nenhum link usado ainda.</p>
+      <ul id="history-list" class="history-list"></ul>
     </section>
 
     <section class="platforms">
