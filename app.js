@@ -101,16 +101,20 @@ function inspectClipboard() {
 renderHistory();
 
 document.querySelector("#paste").addEventListener("click", async () => {
+  urlInput.focus();
   try {
+    if (!navigator.clipboard?.readText) throw new Error("clipboard unavailable");
     const text = await navigator.clipboard.readText();
-    if (!supportedVideoUrl(text)) {
-      setStatus("A área de transferência não contém um link compatível.", "error");
+    const url = supportedVideoUrl(text);
+    if (!url) {
+      setStatus("Copie um link do TikTok, Instagram ou X e tente novamente.", "error");
       return;
     }
-    askToPaste(text);
+    urlInput.value = url;
+    rememberLink(url);
+    setStatus("Link colado. Toque em Baixar vídeo.");
   } catch {
-    setStatus("Não foi possível acessar a área de transferência. Cole o link no campo.", "error");
-    urlInput.focus();
+    setStatus("No iPhone, toque e segure no campo do link e escolha Colar.", "error");
   }
 });
 
